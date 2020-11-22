@@ -19,12 +19,14 @@ class _LandingPageState extends State<LandingPage> {
   }
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext cRontext) {
     if (_user == null) {
       return SignInPage(
         onSignIn: _updateUser,
       );
     }
-    return HomePage(); // temporary placeholder for HomePage
+    return HomePage(
+      onSignOut: () => _updateUser(null),
+    );
   }
 }
