@@ -29,7 +29,7 @@ class _LandingPageState extends State<LandingPage> {
   }
 
   @override
-  Widget build(BuildContext cRontext) {
+  Widget build(BuildContext context) {
     if (_user == null) {
       return SignInPage(
         auth: widget.auth,
