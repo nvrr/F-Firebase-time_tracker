@@ -5,7 +5,7 @@ abstract class AuthBase {
   User get currentUser;
   Stream<User> authStateChanges();
   Future<User> signInAnonymously();
-  Future<User> signInGoogle();
+  Future<User> signInWithGoogle();
   Future<void> signOut();
 }
 
@@ -26,7 +26,7 @@ class Auth implements AuthBase{
   }
   
   @override
-  Future<User> signInGoogle() async {
+  Future<User> signInWithGoogle() async {
     final googleSignIn = GoogleSignIn();
     final googleUser = await googleSignIn.signIn();
     if (googleUser != null) {
