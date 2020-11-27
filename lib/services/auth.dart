@@ -36,12 +36,12 @@ class Auth implements AuthBase{
             .signInWithCredential(GoogleAuthProvider.credential(
           idToken: googleAuth.idToken,
           accessToken: googleAuth.accessToken,
-          ));
-          return userCredential.user;
+        ));
+        return userCredential.user;
       } else {
         throw FirebaseAuthException(
           code: 'ERROR_MISSING_GOOGLE_ID_TOKEN',
-          message: 'Missing Google ID Token'
+          message: 'Missing Google ID Token',
         );
       }
     } else {
@@ -54,6 +54,8 @@ class Auth implements AuthBase{
 
   @override
   Future<void> signOut() async {
+    final googleSignIn = GoogleSignIn();
+    await googleSignIn.signOut();
     await _firebaseAuth.signOut();
   }
 }
