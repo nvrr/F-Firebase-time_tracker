@@ -23,6 +23,14 @@ class SignInPage extends StatelessWidget {
     }
   }
 
+  Future<void> _signInWithFacebook() async{
+    try {
+    await auth.signInWithFacebook();
+    } catch(e) {
+      print(e.toString());
+    }
+  }
+
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -63,13 +71,15 @@ class SignInPage extends StatelessWidget {
               text: 'Sign in with Facebook',
               textColor: Colors.white,
               color: Color(0xFF334d92),
-              onPressed: () {}),
+              onPressed: _signInWithFacebook,
+              ),
           SizedBox(height: 8.0),
           SignInButton(
               text: 'Sign in with email',
               textColor: Colors.white,
               color: Colors.teal[700],
-              onPressed: () {}),
+              onPressed: () {},
+              ),
           SizedBox(height: 8.0),
           Text(
             'or',
