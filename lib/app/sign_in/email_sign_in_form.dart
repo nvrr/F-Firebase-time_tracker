@@ -19,13 +19,13 @@ class EmailSignInForm extends StatelessWidget {
         obscureText: true,
       ),
       SizedBox(height: 8.0),
-      RaisedButton(
-        child: Text('Sign in'),
+      FormSubmitButton(
+        text: 'Sign in',
         onPressed: () {},
       ),
       SizedBox(height: 8.0),
-      FormSubmitButton(
-        text: 'Need an account? Register',
+      FlatButton(
+        child: Text('Need an account? Register'),
         onPressed: () {},
       ),
     ];
