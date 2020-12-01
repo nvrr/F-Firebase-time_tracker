@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:time_tracker/app/sign_in/email_sign_in_page.dart';
 import 'package:time_tracker/app/sign_in/sign_in_button.dart';
 import 'package:time_tracker/app/sign_in/social_sign_in_button.dart';
 import 'package:time_tracker/services/auth.dart';
@@ -33,7 +34,12 @@ class SignInPage extends StatelessWidget {
 
   // showing EmailSign-in page
   void _signInWithEmail(BuildContext context) {
-
+    Navigator.of(context).push(
+      MaterialPageRoute<void>(
+        fullscreenDialog: true,
+        builder: (context) => EmailSignInPage(),
+        )
+    );
   }
 
   Widget build(BuildContext context) {
