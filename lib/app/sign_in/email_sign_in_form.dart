@@ -3,9 +3,17 @@ import 'package:time_tracker/common_widgets/form_submit_button.dart';
 
 class EmailSignInForm extends StatelessWidget {
 
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
+
+  void _submit() {
+    print('email: ${_emailController.text}, password: ${_passwordController.text}');
+  }
+
   List<Widget> _buildChildren() {
     return [
       TextField(
+        controller: _emailController,
         decoration: InputDecoration(
           labelText: 'Email',
           hintText: 'test@test.com',
@@ -13,6 +21,7 @@ class EmailSignInForm extends StatelessWidget {
       ),
       SizedBox(height: 8.0),
       TextField(
+        controller: _passwordController,
         decoration: InputDecoration(
           labelText: 'Password',
         ),
@@ -21,7 +30,7 @@ class EmailSignInForm extends StatelessWidget {
       SizedBox(height: 8.0),
       FormSubmitButton(
         text: 'Sign in',
-        onPressed: () {},
+        onPressed: _submit,
       ),
       SizedBox(height: 8.0),
       FlatButton(
