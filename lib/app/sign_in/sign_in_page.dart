@@ -31,18 +31,23 @@ class SignInPage extends StatelessWidget {
     }
   }
 
+  // showing EmailSign-in page
+  void _signInWithEmail(BuildContext context) {
+
+  }
+
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text('Time Tracker'),
         elevation: 2.0,
       ),
-      body: _buildContent(),
+      body: _buildContent(context),
       backgroundColor: Colors.grey[100],
     );
   }
 
-  Widget _buildContent() {
+  Widget _buildContent(BuildContext context) {
     return Padding(
       padding: EdgeInsets.all(16.0),
       child: Column(
@@ -78,7 +83,7 @@ class SignInPage extends StatelessWidget {
               text: 'Sign in with email',
               textColor: Colors.white,
               color: Colors.teal[700],
-              onPressed: () {},
+              onPressed: () => _signInWithEmail(context),
               ),
           SizedBox(height: 8.0),
           Text(
