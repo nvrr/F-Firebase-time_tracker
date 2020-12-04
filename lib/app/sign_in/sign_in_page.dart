@@ -38,7 +38,7 @@ class SignInPage extends StatelessWidget {
       MaterialPageRoute<void>(
         // for ios to get screen from bottom ::fullscreenDialog: true// 
        // fullscreenDialog: true ,
-        builder: (context) => EmailSignInPage(),
+        builder: (context) => EmailSignInPage(auth: auth),
         )
     );
   }
