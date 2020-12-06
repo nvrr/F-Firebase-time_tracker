@@ -56,6 +56,9 @@ class _EmailSignInFormState extends State<EmailSignInForm> {
     final secondaryText = _formType == EmailSignInFormType.signIn
         ? 'Need an account? Register'
         : 'Have an account? Sign in';
+
+    bool submitEnabled = _email.isNotEmpty && _password.isNotEmpty;
+
     return [
       _buildEmailTextField(),
       SizedBox(height: 8.0),
@@ -63,7 +66,7 @@ class _EmailSignInFormState extends State<EmailSignInForm> {
       SizedBox(height: 8.0),
       FormSubmitButton(
         text: primaryText,
-        onPressed: _submit,
+        onPressed: submitEnabled ? _submit : null,
       ),
       SizedBox(height: 8.0),
       FlatButton(
@@ -82,34 +85,41 @@ class _EmailSignInFormState extends State<EmailSignInForm> {
       ),
       obscureText: true,
       textInputAction: TextInputAction.done,
+      onChanged: (password) => _updateState(),
       onEditingComplete: _submit,
-    );
-  }
-
-  TextField _buildEmailTextField() {
-    return TextField(
-      controller: _emailController,
-      focusNode: _emailFocusNode,
-      decoration: InputDecoration(
-        labelText: 'Email',
-        hintText: 'test@test.com',
-      ),
-      autocorrect: false,
-      keyboardType: TextInputType.emailAddress,
-      textInputAction: TextInputAction.next,
-      onEditingComplete: _emailEditingComplete,
-    );
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(16.0),
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: _buildChildren(),
-      ),
-    );
-  }
+          );
+        }
+      
+        TextField _buildEmailTextField() {
+          return TextField(
+            controller: _emailController,
+            focusNode: _emailFocusNode,
+            decoration: InputDecoration(
+              labelText: 'Email',
+              hintText: 'test@test.com',
+            ),
+            autocorrect: false,
+            keyboardType: TextInputType.emailAddress,
+            textInputAction: TextInputAction.next,
+            onChanged: (password) => _updateState(),
+            onEditingComplete: _emailEditingComplete,
+          );
+        }
+      
+        @override
+        Widget build(BuildContext context) {
+          return Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: _buildChildren(),
+            ),
+          );
+        }
+      
+        void _updateState() {
+          print('email: $_email, password: $_password');
+          setState(() {});
+        }
 }
